@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import AddProduction from "./components/AddProduction";
 import ViewProductions from "./components/ViewProductions";
@@ -12,6 +17,11 @@ function App() {
         <Sidebar />
         <main className="main-content">
           <Routes>
+            {/* Redirection de la racine vers /add-production */}
+            <Route
+              path="/"
+              element={<Navigate to="/add-production" replace />}
+            />
             <Route path="/add-production" element={<AddProduction />} />
             <Route path="/view-productions" element={<ViewProductions />} />
           </Routes>
