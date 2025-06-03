@@ -19,7 +19,10 @@ function App() {
         <main className="main-content">
           <Routes>
             {/* Redirection de la racine vers /add-production */}
-            <Route path="/ajouter-stock" element={<Navigate to="/AddStcok" replace />} />
+            <Route
+              path="/ajouter-stock"
+              element={<Navigate to="/AddStcok" replace />}
+            />
             <Route path="/add-production" element={<AddProduction />} />
             <Route path="/view-productions" element={<ViewProductions />} />
             <Route path="/add-stock" element={<AddStock />} />

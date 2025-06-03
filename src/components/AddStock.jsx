@@ -24,9 +24,9 @@ const AddStock = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
       //  console.log(quantiteEntrant,quantiteSortant);
-const data = await RiSupabaseFill.from("stock").update({
-    quantite: quantiteEntrant
-}).eq("id",1);
+// const data = await RiSupabaseFill.from("stock").update({
+//     quantite: quantiteEntrant
+// }).eq("id",1);
 
     }
 
