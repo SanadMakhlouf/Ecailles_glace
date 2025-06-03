@@ -1,0 +1,53 @@
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 250px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+  padding: 2rem 1rem;
+}
+
+.logo {
+  padding: 1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.logo h2 {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+}
+
+.nav-link i {
+  margin-right: 1rem;
+  font-size: 1.2rem;
+}
+
+.nav-link:hover {
+  background-color: rgba(123, 104, 238, 0.1);
+  color: var(--primary-color);
+}
+
+.nav-link.active {
+  background-color: var(--primary-color);
+  color: var(--white);
+}

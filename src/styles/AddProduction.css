@@ -1,0 +1,65 @@
+.add-production {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.add-production h2 {
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-actions {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-actions .button {
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.form-actions .button:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Style spécifique pour les inputs */
+.form-group input,
+.form-group select {
+  background-color: var(--white);
+  transition: all 0.3s ease;
+}
+
+.form-group input:hover,
+.form-group select:hover {
+  border-color: var(--primary-color);
+}
+
+/* Animation pour le bouton */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.button:active {
+  animation: pulse 0.3s ease-in-out;
+}
