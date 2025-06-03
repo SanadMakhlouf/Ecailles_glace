@@ -1,9 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/Sidebar.css";
-//import { IoMdAddCircleOutline } from "react-icons/io";
+
 
 const Sidebar = () => {
+
+
+
+    
   return (
     <div className="sidebar">
       <div className="logo">
@@ -11,7 +15,7 @@ const Sidebar = () => {
       </div>
       <nav className="nav-menu">
         <NavLink
-          to="/add-production"
+          to="/addStock"
           className={({ isActive }) =>
             isActive ? "nav-link active" : "nav-link"
           }
@@ -31,12 +35,14 @@ const Sidebar = () => {
           Voir les productions
         </NavLink>
         <NavLink
-          to="/"
+          to="/add-stock"
           className={({ isActive }) =>
             isActive ? "nav-link active" : "nav-link"
           }
+          end
         >
-          <i className="fa-solid fa-cubes-stacked"></i> Ajouter Stock
+          <i className="fas fa-box"></i>
+          Gerer Stock
         </NavLink>
       </nav>
     </div>
