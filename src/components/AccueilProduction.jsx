@@ -22,6 +22,9 @@ const AccueilProduction = () => {
   };
 
   return (
+
+
+
     <div className="accueil-production">
       <h1>Tableau de Bord Production</h1>
 

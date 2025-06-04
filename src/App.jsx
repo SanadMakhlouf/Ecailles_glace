@@ -33,11 +33,12 @@ const AppWrapper = () => {
           <Route path="/" element={<Home />} />
 
           {/* Routes Production */}
-          <Route path="/production" element={<AccueilProduction />} />
           <Route
             path="/production/add-production"
             element={<AddProduction />}
           />
+          <Route path="production/Accueil" element={<AccueilProduction />} />
+
           <Route
             path="/production/view-productions"
             element={<ViewProductions />}
@@ -45,6 +46,8 @@ const AppWrapper = () => {
           <Route path="/production/add-stock" element={<AddStock />} />
 
           {/* Routes Commande */}
+          <Route path="commande/Accueil" />
+
           <Route path="/commande" element={<OrderPage />} />
           <Route path="/commande/clients" element={<AddClient />} />
           <Route path="/commande/clients/list" element={<ListClients />} />

@@ -29,6 +29,15 @@ const Sidebar = () => {
       return (
         <>
           <NavLink
+            to="/commande/Accueil"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
+            <i className="fas fa-home"></i>
+            Accueil
+          </NavLink>
+          <NavLink
             to="/commande"
             className={({ isActive }) =>
               isActive && location.pathname === "/commande"
@@ -68,6 +77,15 @@ const Sidebar = () => {
     // Par défaut : production
     return (
       <>
+        <NavLink
+          to="production/Accueil"
+          className={({ isActive }) =>
+            isActive ? "nav-link active" : "nav-link"
+          }
+        >
+          <i className="fas fa-home"></i>
+          Accueil
+        </NavLink>
         <NavLink
           to="/production/add-production"
           className={({ isActive }) =>
