@@ -32,6 +32,11 @@ const Sidebar = () => {
             <i className="fas fa-user"></i>
             Ajouter Client
           </NavLink>
+          <NavLink to="/commande/clients/list" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+            <i className="fas fa-users"></i>
+            Liste Clients
+          </NavLink>
+
         </>
       );
     }

@@ -7,6 +7,7 @@ import ViewProductions from "./components/ViewProductions";
 import AddStock from "./components/AddStock";
 import OrderPage from "./components/OrderPage";
 import AddClient from "./components/AddClient";
+import ListClients from "./components/ListClients.jsx";
 import "./styles/App.css";
 
 // Wrapper pour utiliser useLocation avec Router
@@ -34,6 +35,7 @@ const AppWrapper = () => {
           {/* Routes Commande */}
           <Route path="/commande" element={<OrderPage />} />
           <Route path="/commande/clients" element={<AddClient />} />
+          <Route path="/commande/clients/list" element={<ListClients />} />
         </Routes>
       </main>
     </div>
