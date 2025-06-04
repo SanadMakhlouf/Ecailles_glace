@@ -48,11 +48,10 @@ const AddStock = () => {
   ];
 
   // Calcul de la pagination
-  Passionné par l’informatique, je souhaite intégrer un
-  master pour approfondir mes connaissances et
-  développer mes compétences techniques. Motivé et
-  rigoureux , mon objectif est d’acquérir une expertise
-  solide afin de contribuer à des projets innovants.
+  const totalPages = Math.ceil(mouvementsStock.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentMouvements = mouvementsStock.slice(startIndex, endIndex);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
