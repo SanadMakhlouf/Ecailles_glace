@@ -27,7 +27,6 @@ const AppWrapper = () => {
           <Route path="/" element={<Home />} />
 
           {/* Routes Production */}
-          <Route path="/production" element={<AddProduction />} />
           <Route path="/production/add-production" element={<AddProduction />} />
           <Route path="/production/view-productions" element={<ViewProductions />} />
           <Route path="/production/add-stock" element={<AddStock />} />

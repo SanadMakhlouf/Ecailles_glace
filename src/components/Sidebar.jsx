@@ -1,42 +1,66 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import "../styles/Sidebar.css";
 
 const Sidebar = () => {
   const [section, setSection] = useState("production");
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const stored = localStorage.getItem("activeSection");
-    if (stored) {
-      setSection(stored);
-    } else {
-      // Déduire à partir de l'URL si non défini
-      if (location.pathname.startsWith("/commande")) {
-        setSection("commande");
-      } else {
-        setSection("production");
-      }
+    // Mettre à jour la section en fonction de l'URL
+    if (location.pathname.startsWith("/commande")) {
+      setSection("commande");
+      localStorage.setItem("activeSection", "commande");
+    } else if (location.pathname.startsWith("/production")) {
+      setSection("production");
+      localStorage.setItem("activeSection", "production");
     }
-  }, [location]);
+  }, [location.pathname]);
+
+  const handleLogout = () => {
+    // Ici vous pouvez ajouter la logique de déconnexion
+    localStorage.clear();
+    navigate("/");
+  };
 
   const renderLinks = () => {
     if (section === "commande") {
       return (
         <>
-          <NavLink to="/commande" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+          <NavLink
+            to="/commande"
+            className={({ isActive }) =>
+              isActive && location.pathname === "/commande"
+                ? "nav-link active"
+                : "nav-link"
+            }
+          >
             <i className="fas fa-shopping-cart"></i>
             Nouvelle Commande
           </NavLink>
-          <NavLink to="/commande/clients" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+          <NavLink
+            to="/commande/clients"
+            className={({ isActive }) =>
+              isActive && location.pathname === "/commande/clients"
+                ? "nav-link active"
+                : "nav-link"
+            }
+          >
             <i className="fas fa-user"></i>
             Ajouter Client
           </NavLink>
-          <NavLink to="/commande/clients/list" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+          <NavLink
+            to="/commande/clients/list"
+            className={({ isActive }) =>
+              isActive && location.pathname === "/commande/clients/list"
+                ? "nav-link active"
+                : "nav-link"
+            }
+          >
             <i className="fas fa-users"></i>
             Liste Clients
           </NavLink>
-
         </>
       );
     }
@@ -44,15 +68,30 @@ const Sidebar = () => {
     // Par défaut : production
     return (
       <>
-        <NavLink to="/production/add-production" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+        <NavLink
+          to="/production/add-production"
+          className={({ isActive }) =>
+            isActive ? "nav-link active" : "nav-link"
+          }
+        >
           <i className="fas fa-plus-circle"></i>
           Ajouter Production
         </NavLink>
-        <NavLink to="/production/view-productions" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+        <NavLink
+          to="/production/view-productions"
+          className={({ isActive }) =>
+            isActive ? "nav-link active" : "nav-link"
+          }
+        >
           <i className="fas fa-list"></i>
           Voir Productions
         </NavLink>
-        <NavLink to="/production/add-stock" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+        <NavLink
+          to="/production/add-stock"
+          className={({ isActive }) =>
+            isActive ? "nav-link active" : "nav-link"
+          }
+        >
           <i className="fas fa-box"></i>
           Gérer Stock
         </NavLink>
@@ -62,10 +101,23 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">
-      <div className="logo">
-        <h2>{section === "commande" ? "Commandes" : "Production"}</h2>
+      <div className="sidebar-content">
+        <div className="logo">
+          <h2>{section === "commande" ? "Commandes" : "Production"}</h2>
+        </div>
+        <div className="nav-menu">{renderLinks()}</div>
+        <div className="logout-section">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
+            <i className="fas fa-sign-out-alt"></i>
+            Déconnexion
+          </NavLink>
+        </div>
       </div>
-      <nav className="nav-menu">{renderLinks()}</nav>
     </div>
   );
 };
