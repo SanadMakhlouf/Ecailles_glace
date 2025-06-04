@@ -143,3 +143,31 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Ajoutez ces règles à votre fichier CSS */
+
+.production-details {
+  padding: 1.5rem;
+  word-wrap: break-word; /* Permet de casser les mots longs si nécessaire */
+}
+
+.detail-item {
+  display: flex;
+  margin-bottom: 0.8rem;
+}
+
+.detail-item .label {
+  color: #666;
+  font-weight: 500;
+  min-width: 80px; /* Réserve un espace fixe pour les labels */
+  flex-shrink: 0; /* Empêche le label de rétrécir */
+}
+
+.detail-item .value {
+  color: var(--text-color);
+  font-weight: 600;
+  text-align: right;
+  flex-grow: 1; /* Permet à la valeur de prendre tout l'espace restant */
+  overflow-wrap: break-word; /* Casse les mots longs si nécessaire */
+  padding-left: 10px; /* Ajoute un peu d'espace entre le label et la valeur */
+}
