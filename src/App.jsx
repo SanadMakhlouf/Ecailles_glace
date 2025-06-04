@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Home from "./components/Home";
 import AddProduction from "./components/AddProduction";
@@ -8,6 +13,7 @@ import AddStock from "./components/AddStock";
 import OrderPage from "./components/OrderPage";
 import AddClient from "./components/AddClient";
 import ListClients from "./components/ListClients.jsx";
+import AccueilProduction from "./components/AccueilProduction";
 import "./styles/App.css";
 
 // Wrapper pour utiliser useLocation avec Router
@@ -27,8 +33,15 @@ const AppWrapper = () => {
           <Route path="/" element={<Home />} />
 
           {/* Routes Production */}
-          <Route path="/production/add-production" element={<AddProduction />} />
-          <Route path="/production/view-productions" element={<ViewProductions />} />
+          <Route path="/production" element={<AccueilProduction />} />
+          <Route
+            path="/production/add-production"
+            element={<AddProduction />}
+          />
+          <Route
+            path="/production/view-productions"
+            element={<ViewProductions />}
+          />
           <Route path="/production/add-stock" element={<AddStock />} />
 
           {/* Routes Commande */}
