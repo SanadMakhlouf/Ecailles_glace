@@ -108,7 +108,7 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(37, 99, 235, 0.1);
   min-width: 200px;
-    justify-content: center;
+  justify-content: center;
 }
 
 .action-card:hover {
@@ -126,15 +126,75 @@
   color: inherit;
   flex: 1;
 }
-.actions-rapides{
-
-    box-shadow: 0 2px 15px rgba(30, 64, 175, 0.3);
-
+.actions-rapides {
+  box-shadow: 0 2px 15px rgba(30, 64, 175, 0.3);
 }
 
-.actions-rapides h3{
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
+.actions-rapides h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color:#333;
+}
+
+.productions-recentes {
+  margin-top: 2rem;
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.productions-recentes h3 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th,
+td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #495057;
+}
+
+tr:hover {
+  background-color: #f8f9fa;
+}
+
+.statut {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.statut.terminée {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.statut.en-cours {
+  background-color: #fff3e0;
+  color: #ef6c00;
+}
+
+.statut.annulée {
+  background-color: #ffebee;
+  color: #c62828;
 }

@@ -21,10 +21,46 @@ const AccueilProduction = () => {
     },
   };
 
+  // Données mockées pour les productions récentes
+  const productionsRecentes = [
+    {
+      id: 1,
+      date: "2024-03-20",
+      quantite: "45 kg",
+      type: "Écailles Standard",
+      statut: "Terminée",
+    },
+    {
+      id: 2,
+      date: "2024-03-19",
+      quantite: "38 kg",
+      type: "Écailles Premium",
+      statut: "Terminée",
+    },
+    {
+      id: 3,
+      date: "2024-03-19",
+      quantite: "42 kg",
+      type: "Écailles Standard",
+      statut: "Terminée",
+    },
+    {
+      id: 4,
+      date: "2024-03-18",
+      quantite: "35 kg",
+      type: "Écailles Premium",
+      statut: "Terminée",
+    },
+    {
+      id: 5,
+      date: "2024-03-18",
+      quantite: "40 kg",
+      type: "Écailles Standard",
+      statut: "Terminée",
+    },
+  ];
+
   return (
-
-
-
     <div className="accueil-production">
       <h1>Tableau de Bord Production</h1>
 
@@ -97,36 +133,59 @@ const AccueilProduction = () => {
       </div>
 
       <div className="actions-rapides">
-      <h3> Actions Rapides </h3>
-      <div className="action-cards" >
-        <a href="/">
-             <div className="action-card">
-        <i className="fas fa-plus"></i>
-        <h4>Nouvelle Production</h4>
-
+        <h3> Actions Rapides </h3>
+        <div className="action-cards">
+          <a href="/">
+            <div className="action-card">
+              <i className="fas fa-plus"></i>
+              <h4>Nouvelle Production</h4>
+            </div>
+          </a>
+          <a href="/">
+            <div className="action-card">
+              <i className="fas fa-box"></i>
+              <h4>Gerer Stock</h4>
+            </div>
+          </a>
+          <a href="/">
+            <div className="action-card">
+              <i className="fas fa-list"></i>
+              <h4>Voir Productions</h4>
+            </div>
+          </a>
         </div>
-        </a>
-        <a href="/">
-             <div className="action-card">
-        <i className="fas fa-box"></i>
-        <h4>Gerer Stock</h4>
-
-        </div>
-        </a>
-        <a href="/">
-             <div className="action-card">
-        <i className="fas fa-list"></i>
-        <h4>Voir Productions</h4>
-
-        </div>
-        </a>
-       
       </div>
-      
 
-
-
-
+      <div className="productions-recentes">
+        <h3>Productions Récentes</h3>
+        <div className="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Quantité</th>
+                <th>Statut</th>
+              </tr>
+            </thead>
+            <tbody>
+              {productionsRecentes.map((production) => (
+                <tr key={production.id}>
+                  <td>{production.date}</td>
+                  <td>{production.type}</td>
+                  <td>{production.quantite}</td>
+                  <td>
+                    <span
+                      className={`statut ${production.statut.toLowerCase()}`}
+                    >
+                      {production.statut}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
