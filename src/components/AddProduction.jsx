@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/AddProduction.css";
+import { supabase } from "../config/supabase";
 
 const AddProduction = () => {
   const [production, setProduction] = useState({
@@ -21,10 +22,58 @@ const AddProduction = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Ici vous pouvez ajouter la logique pour sauvegarder la production
-    console.log("Production à sauvegarder:", production);
+
+    // 1. Récupérer l'ID de la machine depuis son nom
+    const { data: machineData, error: machineError } = await supabase
+      .from("machines")
+      .select("id_machine") // attention : c'est "id_machine", pas "id"
+      .eq("nom_machine", production.machine)
+      .single();
+
+    if (machineError) {
+      console.error(
+        "Erreur lors de la récupération de la machine :",
+        machineError
+      );
+      alert("⚠️ Machine non trouvée !");
+      return;
+    }
+
+    const machineId = machineData.id_machine;
+
+    const { data, error } = await supabase.from("production").insert([
+      {
+        date: production.date,
+        duree: production.duree,
+        heure_debut: production.heureDebut,
+        quantite: parseInt(production.quantite),
+        unite: production.unite,
+        energie: parseInt(production.energie),
+        incidents: production.incident === "" ? null : production.incident,
+        id_machine: parseInt(machineId),
+      },
+    ]);
+
+    if (error) {
+      console.error("Erreur lors de l'insertion:", error);
+      alert("⚠️ Erreur lors de l'enregistrement de la production !");
+      return;
+    }
+
+    console.log("Production enregistrée avec succès:", data);
+    alert("✅ Production enregistrée avec succès !");
+    setProduction({
+      date: "",
+      duree: "",
+      heureDebut: "",
+      quantite: "",
+      unite: "kg",
+      energie: "",
+      incident: "",
+      machine: "",
+    });
   };
 
   return (
