@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+/* Conteneur principal avec sidebar */
+.app {
+  display: flex;
+}
+
+/* Zone de contenu quand il y a une sidebar */
+.main-content {
+  flex: 1;
+  padding: 2rem;
+}
+
+/* Conteneur principal sans sidebar (full width) */
+.app.full-width {
+  display: block;
+}
+
+/* Zone de contenu sans sidebar */
+.main-content.full {
+  width: 100%;
+  margin-left: 0;
+  padding: 2rem;
+}
