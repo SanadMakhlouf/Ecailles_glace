@@ -69,8 +69,9 @@ const App = () => (
 
           {/* Commande */}
           <Route path="commande">
-            <Route index element={<OrderPage />} />          {/* /commande affiche OrderPage */}
+            <Route index element={<Navigate to="Accueil" replace />} />          {/* /commande affiche OrderPage */}
             <Route path="Accueil" element={<AccueilCommande />} />
+            <Route path="add-commande" element={<OrderPage />} />
             <Route path="clients" element={<AddClient />} />
             <Route path="clients/list" element={<ListClients />} />
           </Route>

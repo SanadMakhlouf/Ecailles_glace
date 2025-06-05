@@ -31,7 +31,7 @@ const Sidebar = () => {
           <NavLink to="/commande/Accueil" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
             <i className="fas fa-home"></i> Accueil
           </NavLink>
-          <NavLink to="/commande" className={({ isActive }) => isActive && location.pathname === "/commande" ? "nav-link active" : "nav-link"}>
+          <NavLink to="/commande/add-commande" className={({ isActive }) => isActive && location.pathname === "/commande/add-commande" ? "nav-link active" : "nav-link"}>
             <i className="fas fa-shopping-cart"></i> Nouvelle Commande
           </NavLink>
           <NavLink to="/commande/clients" className={({ isActive }) => isActive && location.pathname === "/commande/clients" ? "nav-link active" : "nav-link"}>
