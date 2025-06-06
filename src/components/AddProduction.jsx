@@ -10,7 +10,7 @@ const AddProduction = () => {
     quantite: "",
     unite: "kg",
     energie: "",
-    incident: "",
+    incidents: "",
     machine: "",
   });
 
@@ -46,7 +46,7 @@ const AddProduction = () => {
     const { data, error } = await supabase.from("production").insert([
       {
         date: production.date,
-        duree: production.duree,
+        duree: parseInt(production.duree),
         heure_debut: production.heureDebut,
         quantite: parseInt(production.quantite),
         unite: production.unite,

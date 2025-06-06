@@ -1,22 +1,30 @@
 import React from "react";
 import "../styles/ViewProductions.css";
+import { supabase } from "../config/supabase";
+import { useState, useEffect } from "react";
 
 const ViewProductions = () => {
-  // Exemple de données (à remplacer par vos vraies données)
-  const productions = [
-    {
-      id: 1,
-      date: "2024-03-15",
-      heureDebut: "08:00",
-      duree: 4,
-      quantite: 1500,
-      unite: "kg",
-      energie: 2000,
-      incident: "Aucun",
-      machine: "Machine A",
-    },
-    // Ajoutez d'autres productions ici
-  ];
+  const [productions, setProductions] = useState([]);
+
+  useEffect(() => {
+    const fetchProductions = async () => {
+      const { data, error } = await supabase.from("production").select(`
+          *,
+          machines!id_machine (
+            nom_machine
+          )
+        `);
+
+      if (error) {
+        console.error("Erreur lors de la récupération des productions:", error);
+      } else {
+        console.log("Productions récupérées:", data);
+        setProductions(data);
+      }
+    };
+
+    fetchProductions();
+  }, []);
 
   return (
     <div className="view-productions">
@@ -40,14 +48,14 @@ const ViewProductions = () => {
         {productions.map((production) => (
           <div key={production.id} className="production-card card">
             <div className="production-header">
-              <h3>{production.machine}</h3>
+              <h3>{production.machines?.nom_machine}</h3>
               <span className="date">{production.date}</span>
             </div>
 
             <div className="production-details">
               <div className="detail-item">
                 <span className="label">Heure de début:</span>
-                <span className="value">{production.heureDebut}</span>
+                <span className="value">{production.heure_debut}</span>
               </div>
               <div className="detail-item">
                 <span className="label">Durée:</span>
@@ -65,7 +73,7 @@ const ViewProductions = () => {
               </div>
               <div className="detail-item">
                 <span className="label">Incident:</span>
-                <span className="value">{production.incident}</span>
+                <span className="value">{production.incident || "Aucun"}</span>
               </div>
             </div>
 
